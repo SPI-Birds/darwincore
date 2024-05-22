@@ -2,7 +2,7 @@
 
 # Authors: Cherine Jantzen
 # Created: 2024-05-14
-# Last updated: 2024-05-16
+# Last updated: 2024-05-22
 
 
 # Load packages
@@ -91,9 +91,9 @@ coverage <- list(geographicCoverage = geographic_coverage,
                  taxonomicCoverage = taxonomic_coverage) 
 
 # Methods for data collection
-methods <- list(methodStep = list(list(description = list(para = "Data is collected by regular visits of nest boxes. ...")),
+methods <- list(methodStep = list(list(description = list(para = "The data is collected in a nestbox field study by going out to the nestboxes regularly and measuring a broad range of breeding and individual parameters. ")),
                                   list(description = list(para = "The original breeding data is transformed into the SPI-Birds standard format through a SPI-Birds pipeline. ....")),
-                                  list(description = list(para = "From the data in the SPI-Birds format, the number of breeding pairs is calculated per year, location and species. For this, the number of first clutches is counted. ")))) # TODO
+                                  list(description = list(para = "From the data in the SPI-Birds format, the number of breeding pairs per year, location and species is calculated. This is done by counting the number of first clutches. First clutches are defined based on strict decision rules (see SPI Birds Standard Protocol https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf).")))) # TODO
 
 # Maintenance: frequency of updates
 maintenance <- list(maintenanceUpdateFrequency = "unknown",
