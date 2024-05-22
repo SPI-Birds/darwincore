@@ -19,7 +19,7 @@ load(here::here("data", "locationInformation.rda"))
 # I. Fill in metadata ----------------------------------------------------
 
 # Title of the data set
-title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW)"
+title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as stored at SPI-Birds"
 
 # Information on the creator of the data set
 creator <- list(individualName = list(givenName = "Marcel",
@@ -27,7 +27,7 @@ creator <- list(individualName = list(givenName = "Marcel",
                 organizationName = "Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)",
                 address = list(country = "NL",
                                city = "Wageningen"),
-                electronicMailAddress = "m.visser@nioo.knaw.nl",
+                electronicMailAddress = "AnE_Database@nioo.knaw.nl",
                 userId = "0000-0002-1456-1939")
 
 # Information on the provider of the meta data
@@ -91,9 +91,9 @@ coverage <- list(geographicCoverage = geographic_coverage,
                  taxonomicCoverage = taxonomic_coverage) 
 
 # Methods for data collection
-methods <- list(methodStep = list(list(description = list(para = "The data is collected in a nestbox field study by going out to the nestboxes regularly and measuring a broad range of breeding and individual parameters. ")),
-                                  list(description = list(para = "The original breeding data is transformed into the SPI-Birds standard format through a SPI-Birds pipeline. ....")),
-                                  list(description = list(para = "From the data in the SPI-Birds format, the number of breeding pairs per year, location and species is calculated. This is done by counting the number of first clutches. First clutches are defined based on strict decision rules (see SPI Birds Standard Protocol https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf).")))) # TODO
+methods <- list(methodStep = list(list(description = list(para = "At each study site, nest boxes were checked at least once a week. Breeding parameters (such as laying date, clutch type and clutch size) were recorded and adults were captured in the nest box. Adults are identified based on their ring number and newly ringed if they do not have a ring yet.")),
+                                  list(description = list(para = "This data is transformed into the SPI-Birds standard format through a SPI-Birds pipeline. ....")),
+                                  list(description = list(para = "From the data in the SPI-Birds format, the number of breeding pairs per year, location and species is calculated. This is done by counting the number of first clutches. First clutches refer to the first clutch laid by a female in that season and are defined based on strict decision rules (see SPI-Birds Standard Protocol https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf)."))))
 
 # Maintenance: frequency of updates
 maintenance <- list(maintenanceUpdateFrequency = "unknown",
@@ -101,7 +101,7 @@ maintenance <- list(maintenanceUpdateFrequency = "unknown",
 
 # Project information
 project <- list(title = "SPI-Birds",
-                personnel = list(individualName = list(givenName = "name", # FIXME
+                personnel = list(individualName = list(givenName = "name",
                                                        surName = "name"),
                                  organizationName = "organisation",
                                  address = list(country = "country",
