@@ -2,7 +2,7 @@
 
 # Author: Cherine Jantzen
 # Created: 2024-05-15
-# Last updated: 2024-05-17
+# Last updated: 2024-05-22
 
 
 # I. Preparation ----------------------------------------------------------
@@ -12,7 +12,6 @@ library(dplyr)
 library(taxize)
 library(stringr)
 library(tidyr)
-library(here)
 
 # II. Function ------------------------------------------------------------
 
@@ -22,12 +21,14 @@ library(here)
 ## institution: character, specifying the name of the institution that owns the data
 ## institutionID: character, specifying the institional ID as required for DwC-term "institutionID". Should ideally be Research Organization Registry (ROR) identifier (e.g., "https://ror.org/01g25jp36")
 ## quantityType: character, specifying the system or unit in which the organism Quantities are given (i.e. DwC-term "organismQuantityType"). Default is set to "breeding pairs" as the function is tailored to breeding pair count data
+## data_directory: character, specifying the name of the folder or directory the output files should be stored in
 ## output_prefix: character, specifying the prefix of the filename for the output csv file
 
 map_to_DwCA <- function(countryCode,
                         institution,
                         institutionID,
                         quantityType = "breeding pairs",
+                        data_directory,
                         output_prefix) {
   
   # get supportive information to translate species and location codes from SPI Birds & get coordinates of study sites
@@ -77,9 +78,10 @@ map_to_DwCA <- function(countryCode,
   
   # event date range
   eventInformation <- brood %>% 
+    dplyr::filter(ClutchType_calculated == "first") %>% 
     dplyr::group_by(PopID, Species, BreedingSeason) %>% 
-    dplyr::summarise(minLD = min(LayDate_min),
-                     maxLD = max(LayDate_max)) %>% 
+    dplyr::summarise(minLD = min(LayDate_min, na.rm = TRUE),
+                     maxLD = max(LayDate_max, na.rm = TRUE)) %>% 
     dplyr::mutate(eventDate = dplyr::if_else(!is.na(minLD), paste(minLD, substring(maxLD, first = 6, last = 10), sep = "/"), as.character(BreedingSeason))) %>% 
     dplyr::ungroup() %>% 
     dplyr::left_join(location %>% 
@@ -112,19 +114,19 @@ map_to_DwCA <- function(countryCode,
                   organismQuantityType = quantityType,
                   occurrenceStatus = "present",
                   occurrenceID = paste(PopID, year, Species, sep = "-")) %>% 
-    # reorder columns for the final output file
+      # reorder columns for the final output file
     dplyr::select("occurrenceID", "year", "eventDate", "organismQuantity", "organismQuantityType", "occurrenceStatus", "basisOfRecord",
                   "country", "countryCode", "verbatimLocality", "decimalLatitude", "decimalLongitude", "geodeticDatum", "language", 
                   "institutionID", "institutionCode", "scientificName", "kingdom", "phylum", "class", "order", "family", "genus", 
                   "specificEpithet", "taxonRank", "vernacularName")
   
   # save additional information to be used in EML file
-  save(taxonInformation, file = here::here("data", "taxonInformation.rda"))
-  save(locationInformation, file = here::here("data", "locationInformation.rda"))
+  save(taxonInformation, file = paste(data_directory, "taxonInformation.rda", sep = "/"))
+  save(locationInformation, file = paste(data_directory, "locationInformation.rda", sep = "/"))
   
   # save occurrence output file
   # write occurrence file
-  write.csv(occurrence, file = here::here("data", paste(output_prefix, "occurrence.csv", sep = "_")), row.names = FALSE)
+  write.csv(occurrence, file = paste(data_directory, paste(output_prefix, "occurrence.csv", sep = "_"), sep = "/"), row.names = FALSE)
   
   return(occurrence)
   

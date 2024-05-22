@@ -9,6 +9,7 @@
 
 ## load packages
 library(dplyr)
+library(here)
 
 ## get data from csv files
 brood <- read.csv(file.choose()) # Brood_data
@@ -32,6 +33,7 @@ breedingPairs <- brood %>%
 occurrence <- map_to_DwCA(countryCode = "NL",
                           institution = "NIOO-KNAW",
                           institutionID = "https://ror.org/01g25jp36",
+                          data_directory = "data",
                           output_prefix = "SPIBirds")
 
 # IV. Meta-xml file -------------------------------------------------------
