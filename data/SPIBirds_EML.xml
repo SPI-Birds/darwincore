@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="d8370484-e2bd-483d-a1c5-9a87fc625793" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+  <dataset>
+    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as stored at SPI-Birds Network and Database</title>
+    <creator>
+      <individualName>
+        <givenName>Marcel</givenName>
+        <surName>Visser</surName>
+      </individualName>
+      <organizationName>Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <address>
+        <city>Wageningen</city>
+        <country>NL</country>
+      </address>
+      <electronicMailAddress>AnE_Database@nioo.knaw.nl</electronicMailAddress>
+      <userId directory="https://orcid.org">0000-0002-1456-1939</userId>
+    </creator>
+    <metadataProvider>
+      <individualName>
+        <givenName>Cherine</givenName>
+        <surName>Jantzen</surName>
+      </individualName>
+      <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <address>
+        <city>Wageningen</city>
+        <country>NL</country>
+      </address>
+      <electronicMailAddress>c.jantzen@nioo.knaw.nl</electronicMailAddress>
+      <userId directory="https://orcid.org">0009-0006-0723-2682</userId>
+    </metadataProvider>
+    <language>en</language>
+    <abstract>
+      <para>Annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands, managed by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.</para>
+    </abstract>
+    <keywordSet>
+      <keyword>breeding birds</keyword>
+      <keyword>ecology</keyword>
+      <keyword>bird species abundance</keyword>
+      <keyword>phenology</keyword>
+      <keywordThesaurus>envThes</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>nest box</keyword>
+      <keyword>passerine</keyword>
+    </keywordSet>
+    <licensed>
+      <licenseName>Creative Commons Attribution 4.0 International (CC BY 4.0)</licenseName>
+      <url>https://creativecommons.org/licenses/by/4.0/</url>
+    </licensed>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>4.70028</westBoundingCoordinate>
+          <eastBoundingCoordinate>5.86816</eastBoundingCoordinate>
+          <northBoundingCoordinate>53.27917</northBoundingCoordinate>
+          <southBoundingCoordinate>51.58225</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>1955</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2023</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+      <taxonomicCoverage>
+        <generalTaxonomicCoverage>Data is collected for 8 hole-nesting bird species.</generalTaxonomicCoverage>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Cyanistes caeruleus</taxonRankValue>
+          <commonName>Blue tit</commonName>
+          <taxonId provider="https://www.gbif.org/">2487879</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Ficedula hypoleuca</taxonRankValue>
+          <commonName>Pied flycatcher</commonName>
+          <taxonId provider="https://www.gbif.org/">2492606</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Parus major</taxonRankValue>
+          <commonName>Great tit</commonName>
+          <taxonId provider="https://www.gbif.org/">9705453</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Periparus ater</taxonRankValue>
+          <commonName>Coal tit</commonName>
+          <taxonId provider="https://www.gbif.org/">2487871</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Poecile palustris</taxonRankValue>
+          <commonName>Marsh tit</commonName>
+          <taxonId provider="https://www.gbif.org/">2487843</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Sitta europaea</taxonRankValue>
+          <commonName>Eurasian nuthatch</commonName>
+          <taxonId provider="https://www.gbif.org/">2484916</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Phoenicurus phoenicurus</taxonRankValue>
+          <commonName>Common redstart</commonName>
+          <taxonId provider="https://www.gbif.org/">5739317</taxonId>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>Species</taxonRankName>
+          <taxonRankValue>Passer montanus</taxonRankValue>
+          <commonName>Eurasian tree sparrow</commonName>
+          <taxonId provider="https://www.gbif.org/">5231198</taxonId>
+        </taxonomicClassification>
+      </taxonomicCoverage>
+    </coverage>
+    <maintenance>
+      <description>
+        <para>Frequency of data updates is unknown.</para>
+      </description>
+      <maintenanceUpdateFrequency>unknown</maintenanceUpdateFrequency>
+    </maintenance>
+    <contact id="spi-birds-contact" scope="document">
+      <organizationName>SPI-Birds Network and Database</organizationName>
+      <positionName>data manager</positionName>
+      <address>
+        <city>Wageningen</city>
+        <country>NL</country>
+      </address>
+      <electronicMailAddress>spibirds@nioo.knaw.nl</electronicMailAddress>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para>At each study site, nest boxes were checked at least once a week. Breeding parameters (such as laying date, clutch type and clutch size) were recorded and adults were captured in the nest box. Adults were identified based on their ring number and newly ringed if they do not have a ring yet.</para>
+        </description>
+      </methodStep>
+      <methodStep>
+        <description>
+          <para>These data were transformed into the SPI-Birds standard format (version 1.1; https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf) using a tailor-made pipeline (https://github.com/SPI-Birds/pipelines/blob/master/R/format_NIOO.R).</para>
+        </description>
+      </methodStep>
+      <methodStep>
+        <description>
+          <para>From the data in the SPI-Birds format, the number of breeding pairs per year, location and species was calculated. This was done by counting the number of first clutches. First clutches refer to the first clutch laid by a female in that season and are defined based on strict decision rules (see page 16 in SPI-Birds Standard Protocol, version 1.1; https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf).</para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>SPI-Birds Network and Database</title>
+      <personnel>
+        <references>spi-birds-contact</references>
+        <role>pointOfContact</role>
+      </personnel>
+      <abstract>SPI-Birds Network and Database, or the Studies of Populations of Individual Birds, is a grassroots initiative connecting those working on populations of individually-marked breeding birds. As part of this project, we are building pipelines for different research groups and study sites that convert data in a standard format. We envision this standard format will facilitate greater collaboration by allowing data from multiple study sites and sources to be easily collated and compared. More info: https://spibirds.org/en.</abstract>
+    </project>
+  </dataset>
+</eml:eml>
