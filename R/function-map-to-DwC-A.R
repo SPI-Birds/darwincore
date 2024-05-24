@@ -62,11 +62,12 @@ map_to_DwCA <- function(countryCode,
                        dplyr::select("PopID", "PopName"), 
                      by = "PopID") %>% 
     dplyr::mutate(verbatimLocality = dplyr::case_when(PopID == "LIC" ~ "Lichtenbeek", 
-                                                      PopID == "LIE" ~ "Liesbosch Breda", 
+                                                      PopID == "LIE" ~ "Liesbos", 
                                                       TRUE ~ PopName)) %>% 
     dplyr::left_join(pop_locations %>% 
                        dplyr::select("site_name", "country", "latitude", "longitude") %>% 
                        dplyr::mutate(site_name = dplyr::case_when(stringr::str_detect(string = site_name, pattern = "Westerheide") ~ "Westerheide",
+                                                                  stringr::str_detect(string = site_name, pattern = "Liesbos") ~ "Liesbos",
                                                                   TRUE ~ site_name),
                                      countryCode = countryCode),
                      by = c("verbatimLocality" = "site_name")) %>% 
@@ -80,9 +81,10 @@ map_to_DwCA <- function(countryCode,
   eventInformation <- brood %>% 
     dplyr::filter(ClutchType_calculated == "first") %>% 
     dplyr::group_by(PopID, Species, BreedingSeason) %>% 
-    dplyr::summarise(minLD = min(LayDate_min, na.rm = TRUE),
-                     maxLD = max(LayDate_max, na.rm = TRUE)) %>% 
-    dplyr::mutate(eventDate = dplyr::if_else(!is.na(minLD), paste(minLD, substring(maxLD, first = 6, last = 10), sep = "/"), as.character(BreedingSeason))) %>% 
+    dplyr::summarise(minLD = min(c(LayDate_min, LayDate_observed), na.rm = TRUE),
+                     maxLD = max(c(LayDate_max, LayDate_observed), na.rm = TRUE)) %>% 
+    dplyr::mutate(eventDate = dplyr::if_else(!is.na(minLD), paste(minLD, substring(maxLD, first = 6, last = 10), sep = "/"), 
+                                             as.character(BreedingSeason))) %>% 
     dplyr::ungroup() %>% 
     dplyr::left_join(location %>% 
                        dplyr::distinct(., PopID, HabitatType, .keep_all = FALSE),
@@ -126,7 +128,8 @@ map_to_DwCA <- function(countryCode,
   
   # save occurrence output file
   # write occurrence file
-  write.csv(occurrence, file = paste(data_directory, paste(output_prefix, "occurrence.csv", sep = "_"), sep = "/"), row.names = FALSE)
+  write.csv(occurrence, file = paste(data_directory, paste(output_prefix, "occurrence.csv", sep = "_"), sep = "/"), 
+            row.names = FALSE)
   
   return(occurrence)
   
