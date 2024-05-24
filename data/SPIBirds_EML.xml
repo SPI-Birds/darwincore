@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="d8370484-e2bd-483d-a1c5-9a87fc625793" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
-    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW)</title>
+    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as stored at SPI-Birds Network and Database</title>
     <creator>
       <individualName>
         <givenName>Marcel</givenName>
@@ -12,7 +12,7 @@
         <city>Wageningen</city>
         <country>NL</country>
       </address>
-      <electronicMailAddress>m.visser@nioo.knaw.nl</electronicMailAddress>
+      <electronicMailAddress>AnE_Database@nioo.knaw.nl</electronicMailAddress>
       <userId directory="https://orcid.org">0000-0002-1456-1939</userId>
     </creator>
     <metadataProvider>
@@ -30,7 +30,7 @@
     </metadataProvider>
     <language>en</language>
     <abstract>
-      <para>??</para>
+      <para>Annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands, managed by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.</para>
     </abstract>
     <keywordSet>
       <keyword>breeding birds</keyword>
@@ -49,7 +49,7 @@
     </licensed>
     <coverage>
       <geographicCoverage>
-        <geographicDescription>Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbosch Breda, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.</geographicDescription>
+        <geographicDescription>Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.</geographicDescription>
         <boundingCoordinates>
           <westBoundingCoordinate>4.70028</westBoundingCoordinate>
           <eastBoundingCoordinate>5.86816</eastBoundingCoordinate>
@@ -68,7 +68,7 @@
         </rangeOfDates>
       </temporalCoverage>
       <taxonomicCoverage>
-        <generalTaxonomicCoverage>Data is collected for 8 bird species.</generalTaxonomicCoverage>
+        <generalTaxonomicCoverage>Data is collected for 8 hole-nesting bird species.</generalTaxonomicCoverage>
         <taxonomicClassification>
           <taxonRankName>Species</taxonRankName>
           <taxonRankValue>Cyanistes caeruleus</taxonRankValue>
@@ -125,9 +125,9 @@
       </description>
       <maintenanceUpdateFrequency>unknown</maintenanceUpdateFrequency>
     </maintenance>
-    <contact>
-      <organizationName>SPI-Birds</organizationName>
-      <positionName>?</positionName>
+    <contact id="spi-birds-contact" scope="document">
+      <organizationName>SPI-Birds Network and Database</organizationName>
+      <positionName>data manager</positionName>
       <address>
         <city>Wageningen</city>
         <country>NL</country>
@@ -137,35 +137,27 @@
     <methods>
       <methodStep>
         <description>
-          <para>Data is collected by regular visits of nest boxes. ...</para>
+          <para>At each study site, nest boxes were checked at least once a week. Breeding parameters (such as laying date, clutch type and clutch size) were recorded and adults were captured in the nest box. Adults were identified based on their ring number and newly ringed if they do not have a ring yet.</para>
         </description>
       </methodStep>
       <methodStep>
         <description>
-          <para>The original breeding data is transformed into the SPI-Birds standard format through a SPI-Birds pipeline. ....</para>
+          <para>These data were transformed into the SPI-Birds standard format (version 1.1; https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf) using a tailor-made pipeline (https://github.com/SPI-Birds/pipelines/blob/master/R/format_NIOO.R).</para>
         </description>
       </methodStep>
       <methodStep>
         <description>
-          <para>From the data in the SPI-Birds format, the number of breeding pairs is calculated per year, location and species. For this, the number of first clutches is counted. </para>
+          <para>From the data in the SPI-Birds format, the number of breeding pairs per year, location and species was calculated. This was done by counting the number of first clutches. First clutches refer to the first clutch laid by a female in that season and are defined based on strict decision rules (see page 16 in SPI-Birds Standard Protocol, version 1.1; https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf).</para>
         </description>
       </methodStep>
     </methods>
     <project>
-      <title>SPI-Birds</title>
+      <title>SPI-Birds Network and Database</title>
       <personnel>
-        <individualName>
-          <givenName>name</givenName>
-          <surName>name</surName>
-        </individualName>
-        <organizationName>organisation</organizationName>
-        <address>
-          <city>city</city>
-          <country>country</country>
-        </address>
-        <electronicMailAddress>spibirds@nioo.knaw.nl</electronicMailAddress>
-        <role>person</role>
+        <references>spi-birds-contact</references>
+        <role>pointOfContact</role>
       </personnel>
+      <abstract>SPI-Birds Network and Database, or the Studies of Populations of Individual Birds, is a grassroots initiative connecting those working on populations of individually-marked breeding birds. As part of this project, we are building pipelines for different research groups and study sites that convert data in a standard format. We envision this standard format will facilitate greater collaboration by allowing data from multiple study sites and sources to be easily collated and compared. More info: https://spibirds.org/en.</abstract>
     </project>
   </dataset>
 </eml:eml>

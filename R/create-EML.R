@@ -19,7 +19,7 @@ load(here::here("data", "locationInformation.rda"))
 # I. Fill in metadata ----------------------------------------------------
 
 # Title of the data set
-title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as stored at SPI-Birds"
+title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database"
 
 # Information on the creator of the data set
 creator <- list(individualName = list(givenName = "Marcel",
@@ -40,17 +40,21 @@ metadataProvider <- list(individualName = list(givenName = "Cherine",
                          userId = "0009-0006-0723-2682")
 
 # Information on the contact person
-contact_person <- list(organizationName = "SPI-Birds",
-                       address = list(country = "NL", # FIXME Where?
-                                      city = "Wageningen"), # FIXME Where?
-                       positionName = "?", # FIXME Who?
-                       electronicMailAddress = "spibirds@nioo.knaw.nl") # FIXME correct?
+contactPerson <- list(organizationName = "SPI-Birds Network and Database",
+                      address = list(country = "NL",
+                                     city = "Wageningen"),
+                      positionName = "data manager",
+                      electronicMailAddress = "spibirds@nioo.knaw.nl")
+
+contactPerson <- c(contactPerson,
+                   id = "spi-birds-contact",
+                   scope = "document")
 
 # Language of the data
 language <- "en"
 
 # Abstract describing the data set
-abstract <- list(para = "??")
+abstract <- list(para = "Annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands, managed by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.")
 
                    
 # List of keywords and the thesaurus they are listed in
@@ -63,7 +67,7 @@ licensed <- list(licenseName = "Creative Commons Attribution 4.0 International (
                  url = "https://creativecommons.org/licenses/by/4.0/")
 
 # geographic coverage
-geographic_coverage <- list(geographicDescription = "Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbosch Breda, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.",
+geographic_coverage <- list(geographicDescription = "Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.",
                             boundingCoordinates = list(westBoundingCoordinate = as.character(min(locationInformation$decimalLongitude)),
                                                        eastBoundingCoordinate = as.character(max(locationInformation$decimalLongitude)),
                                                        northBoundingCoordinate = as.character(max(locationInformation$decimalLatitude)),
@@ -82,7 +86,7 @@ taxonomicClassification <- purrr::map(.x = 1:nrow(taxonInformation),
                                                           commonName = taxonInformation$vernacularName[.x])
                                       })
 
-taxonomic_coverage <- list(generalTaxonomicCoverage = "Data is collected for 8 bird species.",
+taxonomic_coverage <- list(generalTaxonomicCoverage = "Data is collected for 8 hole-nesting bird species.",
                            taxonomicClassification = taxonomicClassification)
 
 # Combine all three types of coverage
@@ -91,23 +95,19 @@ coverage <- list(geographicCoverage = geographic_coverage,
                  taxonomicCoverage = taxonomic_coverage) 
 
 # Methods for data collection
-methods <- list(methodStep = list(list(description = list(para = "At each study site, nest boxes were checked at least once a week. Breeding parameters (such as laying date, clutch type and clutch size) were recorded and adults were captured in the nest box. Adults are identified based on their ring number and newly ringed if they do not have a ring yet.")),
-                                  list(description = list(para = "This data is transformed into the SPI-Birds standard format through a SPI-Birds pipeline. ....")),
-                                  list(description = list(para = "From the data in the SPI-Birds format, the number of breeding pairs per year, location and species is calculated. This is done by counting the number of first clutches. First clutches refer to the first clutch laid by a female in that season and are defined based on strict decision rules (see SPI-Birds Standard Protocol https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf)."))))
+methods <- list(methodStep = list(list(description = list(para = "At each study site, nest boxes were checked at least once a week. Breeding parameters (such as laying date, clutch type and clutch size) were recorded and adults were captured in the nest box. Adults were identified based on their ring number and newly ringed if they do not have a ring yet.")),
+                                  list(description = list(para = "These data were transformed into the SPI-Birds standard format (version 1.1; https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf) using a tailor-made pipeline (https://github.com/SPI-Birds/pipelines/blob/master/R/format_NIOO.R).")),
+                                  list(description = list(para = "From the data in the SPI-Birds format, the number of breeding pairs per year, location and species was calculated. This was done by counting the number of first clutches. First clutches refer to the first clutch laid by a female in that season and are defined based on strict decision rules (see page 16 in SPI-Birds Standard Protocol, version 1.1; https://github.com/SPI-Birds/documentation/blob/master/standard_protocol/SPI_Birds_Protocol_v1.1.0.pdf)."))))
 
 # Maintenance: frequency of updates
 maintenance <- list(maintenanceUpdateFrequency = "unknown",
                     description = list(para = "Frequency of data updates is unknown."))
 
 # Project information
-project <- list(title = "SPI-Birds",
-                personnel = list(individualName = list(givenName = "name",
-                                                       surName = "name"),
-                                 organizationName = "organisation",
-                                 address = list(country = "country",
-                                                city = "city"),
-                                 electronicMailAddress = "spibirds@nioo.knaw.nl",
-                                 role = "person"))
+project <- list(title = "SPI-Birds Network and Database",
+                abstract = "SPI-Birds Network and Database, or the Studies of Populations of Individual Birds, is a grassroots initiative connecting those working on populations of individually-marked breeding birds. As part of this project, we are building pipelines for different research groups and study sites that convert data in a standard format. We envision this standard format will facilitate greater collaboration by allowing data from multiple study sites and sources to be easily collated and compared. More info: https://spibirds.org/en.",
+                personnel = list(references = contactPerson$id,
+                                 role = "pointOfContact"))
 
 
 # Create EML file ---------------------------------------------------------
@@ -125,7 +125,7 @@ eml <- list(dataset =
                    licensed = licensed,
                    coverage = coverage,
                    maintenance = maintenance,
-                   contact = contact_person,
+                   contact = contactPerson,
                    methods = methods,
                    project = project),
             system = "uuid",
