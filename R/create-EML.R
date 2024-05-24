@@ -22,7 +22,7 @@ load(here::here("data", "locationInformation.rda"))
 title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database"
 
 # Information on the creator of the data set
-creator <- list(list(individualName = list(givenName = "Marcel E.",
+creator <- list(list(individualName = list(givenName = "Marcel E",
                                            surName = "Visser"),
                      organizationName = "Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)",
                      address = list(country = "NL",
@@ -30,7 +30,15 @@ creator <- list(list(individualName = list(givenName = "Marcel E.",
                      positionName = "head of department",
                      electronicMailAddress = "AnE_Database@nioo.knaw.nl",
                      userId = "0000-0002-1456-1939"),
-                list(individualName = list(givenName = "Stefan J.G.",
+                list(individualName = list(givenName = "Antica",
+                                           surName = "Culina"),
+                     organizationName = "Ruder Boskovic Institute",
+                     address = list(country = "HR",
+                                    city = "Zagreb"),
+                     positionName = "SPI-Birds coordinator",
+                     electronicMailAddress = "Antica.Culina@irb.hr",
+                     userId = "0000-0003-2910-8085"),
+                list(individualName = list(givenName = "Stefan JG",
                                            surName = "Vriend"),
                      organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
                      address = list(country = "NL",
@@ -38,7 +46,7 @@ creator <- list(list(individualName = list(givenName = "Marcel E.",
                      positionName = "SPI-Birds data manager",
                      electronicMailAddress = "spibirds@nioo.knaw.nl",
                      userId = "0000-0002-9006-5988"),
-                list(individualName = list(givenName = "Cherine C.",
+                list(individualName = list(givenName = "Cherine C",
                                            surName = "Jantzen"),
                      organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
                      address = list(country = "NL",
@@ -92,8 +100,8 @@ geographic_coverage <- list(geographicDescription = "Eight study sites across th
                                                        northBoundingCoordinate = as.character(max(locationInformation$decimalLatitude)),
                                                        southBoundingCoordinate = as.character(min(locationInformation$decimalLatitude))))
 # Temporal coverage of the data
-temporal_coverage <- list(rangeOfDates = list(beginDate = list(calendarDate = "1955"),
-                                              endDate = list(calendarDate = "2023")))
+temporal_coverage <- list(rangeOfDates = list(beginDate = list(calendarDate = "1955-04-18"),
+                                              endDate = list(calendarDate = "2023-05-17")))
 
 # Taxonomic coverage of the data
 taxonomicClassification <- purrr::map(.x = 1:nrow(taxonInformation),

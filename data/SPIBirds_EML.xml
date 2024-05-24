@@ -4,7 +4,7 @@
     <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database</title>
     <creator>
       <individualName>
-        <givenName>Marcel E.</givenName>
+        <givenName>Marcel E</givenName>
         <surName>Visser</surName>
       </individualName>
       <organizationName>Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
@@ -18,7 +18,21 @@
     </creator>
     <creator>
       <individualName>
-        <givenName>Stefan J.G.</givenName>
+        <givenName>Antica</givenName>
+        <surName>Culina</surName>
+      </individualName>
+      <organizationName>Ruder Boskovic Institute</organizationName>
+      <positionName>SPI-Birds coordinator</positionName>
+      <address>
+        <city>Zagreb</city>
+        <country>HR</country>
+      </address>
+      <electronicMailAddress>Antica.Culina@irb.hr</electronicMailAddress>
+      <userId directory="https://orcid.org/">0000-0003-2910-8085</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Stefan JG</givenName>
         <surName>Vriend</surName>
       </individualName>
       <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
@@ -32,7 +46,7 @@
     </creator>
     <creator>
       <individualName>
-        <givenName>Cherine C.</givenName>
+        <givenName>Cherine C</givenName>
         <surName>Jantzen</surName>
       </individualName>
       <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
@@ -92,10 +106,10 @@
       <temporalCoverage>
         <rangeOfDates>
           <beginDate>
-            <calendarDate>1955</calendarDate>
+            <calendarDate>1955-04-18</calendarDate>
           </beginDate>
           <endDate>
-            <calendarDate>2023</calendarDate>
+            <calendarDate>2023-05-17</calendarDate>
           </endDate>
         </rangeOfDates>
       </temporalCoverage>
