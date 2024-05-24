@@ -22,49 +22,68 @@ load(here::here("data", "locationInformation.rda"))
 title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database"
 
 # Information on the creator of the data set
-creator <- list(individualName = list(givenName = "Marcel",
-                                      surName = "Visser"),
-                organizationName = "Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)",
-                address = list(country = "NL",
-                               city = "Wageningen"),
-                electronicMailAddress = "AnE_Database@nioo.knaw.nl",
-                userId = "0000-0002-1456-1939")
+creator <- list(list(individualName = list(givenName = "Marcel E.",
+                                           surName = "Visser"),
+                     organizationName = "Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)",
+                     address = list(country = "NL",
+                                    city = "Wageningen"),
+                     positionName = "head of department",
+                     electronicMailAddress = "AnE_Database@nioo.knaw.nl",
+                     userId = "0000-0002-1456-1939"),
+                list(individualName = list(givenName = "Stefan J.G.",
+                                           surName = "Vriend"),
+                     organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
+                     address = list(country = "NL",
+                                    city = "Wageningen"),
+                     positionName = "SPI-Birds data manager",
+                     electronicMailAddress = "spibirds@nioo.knaw.nl",
+                     userId = "0000-0002-9006-5988"),
+                list(individualName = list(givenName = "Cherine C.",
+                                           surName = "Jantzen"),
+                     organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
+                     address = list(country = "NL",
+                                    city = "Wageningen"),
+                     positionName = "FAIR data analyst",
+                     electronicMailAddress = "c.jantzen@nioo.knaw.nl",
+                     userId = "0009-0006-0723-2682"))
 
 # Information on the provider of the meta data
-metadataProvider <- list(individualName = list(givenName = "Cherine",
+metadataProvider <- list(individualName = list(givenName = "Cherine C.",
                                                surName = "Jantzen"),
                          organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
                          address = list(country = "NL",
                                         city = "Wageningen"),
+                         positionName = "FAIR data analyst",
                          electronicMailAddress = "c.jantzen@nioo.knaw.nl",
                          userId = "0009-0006-0723-2682")
 
 # Information on the contact person
-contactPerson <- list(organizationName = "SPI-Birds Network and Database",
+contactPerson <- list(individualName = list(givenName = "Stefan J.G.",
+                                            surName = "Vriend"),
+                      organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
                       address = list(country = "NL",
                                      city = "Wageningen"),
-                      positionName = "data manager",
-                      electronicMailAddress = "spibirds@nioo.knaw.nl")
-
-contactPerson <- c(contactPerson,
-                   id = "spi-birds-contact",
-                   scope = "document")
+                      positionName = "SPI-Birds data manager",
+                      electronicMailAddress = "spibirds@nioo.knaw.nl",
+                      userId = "0000-0002-9006-5988")
 
 # Language of the data
 language <- "en"
 
 # Abstract describing the data set
-abstract <- list(para = "Annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands, managed by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.")
+abstract <- list(para = "This dataset contains the annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands. Data were collected by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.")
 
                    
 # List of keywords and the thesaurus they are listed in
 keywords <- list(list(keyword = list("breeding birds", "ecology", "bird species abundance", "phenology"),
                       keywordThesaurus = "envThes"),
-                 list(keyword = list("nest box", "passerine")))
+                 list(keyword = list("nest box", "passerine"),
+                      keywordThesaurus = "n/a"))
 
 # License for the work
-licensed <- list(licenseName = "Creative Commons Attribution 4.0 International (CC BY 4.0)",
-                 url = "https://creativecommons.org/licenses/by/4.0/")
+licensed <- list(licenseName = "Creative Commons Attribution 4.0 International",
+                 url = "https://creativecommons.org/licenses/by/4.0/",
+                 identifier = "CC-BY-4.0")
 
 # geographic coverage
 geographic_coverage <- list(geographicDescription = "Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.",
@@ -106,8 +125,19 @@ maintenance <- list(maintenanceUpdateFrequency = "unknown",
 # Project information
 project <- list(title = "SPI-Birds Network and Database",
                 abstract = "SPI-Birds Network and Database, or the Studies of Populations of Individual Birds, is a grassroots initiative connecting those working on populations of individually-marked breeding birds. As part of this project, we are building pipelines for different research groups and study sites that convert data in a standard format. We envision this standard format will facilitate greater collaboration by allowing data from multiple study sites and sources to be easily collated and compared. More info: https://spibirds.org/en.",
-                personnel = list(references = contactPerson$id,
-                                 role = "pointOfContact"))
+                personnel = list(list(individualName = list(givenName = "Stefan J.G.",
+                                                            surName = "Vriend"),
+                                      role = "pointOfContact",
+                                      electronicMailAddress = "spibirds@nioo.knaw.nl",
+                                      userId = "0000-0002-9006-5988"),
+                                 list(individualName = list(givenName = "Antica",
+                                                            surName = "Culina"),
+                                      role = "principalInvestigator",
+                                      userId = "0000-0003-2910-8085"),
+                                 list(individualName = list(givenName = "Marcel E.",
+                                                            surName = "Visser"),
+                                      role = "principalInvestigator",
+                                      userId = "0000-0002-1456-1939")))
 
 
 # Create EML file ---------------------------------------------------------
@@ -156,7 +186,7 @@ xml2::xml_set_attr(title_node, attr = "xml:lang", value = "en")
 userId_node <- xml2::xml_find_all(EML, xpath = "//userId")
 
 # Set directory attribute
-xml2::xml_set_attr(userId_node, attr = "directory", value = "https://orcid.org")
+xml2::xml_set_attr(userId_node, attr = "directory", value = "https://orcid.org/")
 
 
 # 4. Validate EML file ----------------------------------------------------

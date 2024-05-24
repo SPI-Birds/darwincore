@@ -1,36 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="d8370484-e2bd-483d-a1c5-9a87fc625793" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
-    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as stored at SPI-Birds Network and Database</title>
+    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database</title>
     <creator>
       <individualName>
-        <givenName>Marcel</givenName>
+        <givenName>Marcel E.</givenName>
         <surName>Visser</surName>
       </individualName>
       <organizationName>Department of Animal Ecology, Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <positionName>head of department</positionName>
       <address>
         <city>Wageningen</city>
         <country>NL</country>
       </address>
       <electronicMailAddress>AnE_Database@nioo.knaw.nl</electronicMailAddress>
-      <userId directory="https://orcid.org">0000-0002-1456-1939</userId>
+      <userId directory="https://orcid.org/">0000-0002-1456-1939</userId>
     </creator>
-    <metadataProvider>
+    <creator>
       <individualName>
-        <givenName>Cherine</givenName>
+        <givenName>Stefan J.G.</givenName>
+        <surName>Vriend</surName>
+      </individualName>
+      <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <positionName>SPI-Birds data manager</positionName>
+      <address>
+        <city>Wageningen</city>
+        <country>NL</country>
+      </address>
+      <electronicMailAddress>spibirds@nioo.knaw.nl</electronicMailAddress>
+      <userId directory="https://orcid.org/">0000-0002-9006-5988</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Cherine C.</givenName>
         <surName>Jantzen</surName>
       </individualName>
       <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <positionName>FAIR data analyst</positionName>
       <address>
         <city>Wageningen</city>
         <country>NL</country>
       </address>
       <electronicMailAddress>c.jantzen@nioo.knaw.nl</electronicMailAddress>
-      <userId directory="https://orcid.org">0009-0006-0723-2682</userId>
+      <userId directory="https://orcid.org/">0009-0006-0723-2682</userId>
+    </creator>
+    <metadataProvider>
+      <individualName>
+        <givenName>Cherine C.</givenName>
+        <surName>Jantzen</surName>
+      </individualName>
+      <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <positionName>FAIR data analyst</positionName>
+      <address>
+        <city>Wageningen</city>
+        <country>NL</country>
+      </address>
+      <electronicMailAddress>c.jantzen@nioo.knaw.nl</electronicMailAddress>
+      <userId directory="https://orcid.org/">0009-0006-0723-2682</userId>
     </metadataProvider>
     <language>en</language>
     <abstract>
-      <para>Annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands, managed by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.</para>
+      <para>This dataset contains the annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands. Data were collected by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.</para>
     </abstract>
     <keywordSet>
       <keyword>breeding birds</keyword>
@@ -42,10 +72,12 @@
     <keywordSet>
       <keyword>nest box</keyword>
       <keyword>passerine</keyword>
+      <keywordThesaurus>n/a</keywordThesaurus>
     </keywordSet>
     <licensed>
-      <licenseName>Creative Commons Attribution 4.0 International (CC BY 4.0)</licenseName>
+      <licenseName>Creative Commons Attribution 4.0 International</licenseName>
       <url>https://creativecommons.org/licenses/by/4.0/</url>
+      <identifier>CC-BY-4.0</identifier>
     </licensed>
     <coverage>
       <geographicCoverage>
@@ -125,14 +157,19 @@
       </description>
       <maintenanceUpdateFrequency>unknown</maintenanceUpdateFrequency>
     </maintenance>
-    <contact id="spi-birds-contact" scope="document">
-      <organizationName>SPI-Birds Network and Database</organizationName>
-      <positionName>data manager</positionName>
+    <contact>
+      <individualName>
+        <givenName>Stefan J.G.</givenName>
+        <surName>Vriend</surName>
+      </individualName>
+      <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
+      <positionName>SPI-Birds data manager</positionName>
       <address>
         <city>Wageningen</city>
         <country>NL</country>
       </address>
       <electronicMailAddress>spibirds@nioo.knaw.nl</electronicMailAddress>
+      <userId directory="https://orcid.org/">0000-0002-9006-5988</userId>
     </contact>
     <methods>
       <methodStep>
@@ -154,8 +191,29 @@
     <project>
       <title>SPI-Birds Network and Database</title>
       <personnel>
-        <references>spi-birds-contact</references>
+        <individualName>
+          <givenName>Stefan J.G.</givenName>
+          <surName>Vriend</surName>
+        </individualName>
+        <electronicMailAddress>spibirds@nioo.knaw.nl</electronicMailAddress>
+        <userId directory="https://orcid.org/">0000-0002-9006-5988</userId>
         <role>pointOfContact</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Antica</givenName>
+          <surName>Culina</surName>
+        </individualName>
+        <userId directory="https://orcid.org/">0000-0003-2910-8085</userId>
+        <role>principalInvestigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Marcel E.</givenName>
+          <surName>Visser</surName>
+        </individualName>
+        <userId directory="https://orcid.org/">0000-0002-1456-1939</userId>
+        <role>principalInvestigator</role>
       </personnel>
       <abstract>SPI-Birds Network and Database, or the Studies of Populations of Individual Birds, is a grassroots initiative connecting those working on populations of individually-marked breeding birds. As part of this project, we are building pipelines for different research groups and study sites that convert data in a standard format. We envision this standard format will facilitate greater collaboration by allowing data from multiple study sites and sources to be easily collated and compared. More info: https://spibirds.org/en.</abstract>
     </project>
