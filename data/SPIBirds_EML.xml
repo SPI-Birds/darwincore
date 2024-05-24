@@ -60,7 +60,7 @@
     </creator>
     <metadataProvider>
       <individualName>
-        <givenName>Cherine C.</givenName>
+        <givenName>Cherine C</givenName>
         <surName>Jantzen</surName>
       </individualName>
       <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
@@ -173,7 +173,7 @@
     </maintenance>
     <contact>
       <individualName>
-        <givenName>Stefan J.G.</givenName>
+        <givenName>Stefan JG</givenName>
         <surName>Vriend</surName>
       </individualName>
       <organizationName>Netherlands Institute of Ecology (NIOO-KNAW)</organizationName>
@@ -206,7 +206,7 @@
       <title>SPI-Birds Network and Database</title>
       <personnel>
         <individualName>
-          <givenName>Stefan J.G.</givenName>
+          <givenName>Stefan JG</givenName>
           <surName>Vriend</surName>
         </individualName>
         <electronicMailAddress>spibirds@nioo.knaw.nl</electronicMailAddress>
@@ -223,7 +223,7 @@
       </personnel>
       <personnel>
         <individualName>
-          <givenName>Marcel E.</givenName>
+          <givenName>Marcel E</givenName>
           <surName>Visser</surName>
         </individualName>
         <userId directory="https://orcid.org/">0000-0002-1456-1939</userId>

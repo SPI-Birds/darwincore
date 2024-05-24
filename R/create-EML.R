@@ -56,7 +56,7 @@ creator <- list(list(individualName = list(givenName = "Marcel E",
                      userId = "0009-0006-0723-2682"))
 
 # Information on the provider of the meta data
-metadataProvider <- list(individualName = list(givenName = "Cherine C.",
+metadataProvider <- list(individualName = list(givenName = "Cherine C",
                                                surName = "Jantzen"),
                          organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
                          address = list(country = "NL",
@@ -66,7 +66,7 @@ metadataProvider <- list(individualName = list(givenName = "Cherine C.",
                          userId = "0009-0006-0723-2682")
 
 # Information on the contact person
-contactPerson <- list(individualName = list(givenName = "Stefan J.G.",
+contactPerson <- list(individualName = list(givenName = "Stefan JG",
                                             surName = "Vriend"),
                       organizationName = "Netherlands Institute of Ecology (NIOO-KNAW)",
                       address = list(country = "NL",
@@ -133,7 +133,7 @@ maintenance <- list(maintenanceUpdateFrequency = "unknown",
 # Project information
 project <- list(title = "SPI-Birds Network and Database",
                 abstract = "SPI-Birds Network and Database, or the Studies of Populations of Individual Birds, is a grassroots initiative connecting those working on populations of individually-marked breeding birds. As part of this project, we are building pipelines for different research groups and study sites that convert data in a standard format. We envision this standard format will facilitate greater collaboration by allowing data from multiple study sites and sources to be easily collated and compared. More info: https://spibirds.org/en.",
-                personnel = list(list(individualName = list(givenName = "Stefan J.G.",
+                personnel = list(list(individualName = list(givenName = "Stefan JG",
                                                             surName = "Vriend"),
                                       role = "pointOfContact",
                                       electronicMailAddress = "spibirds@nioo.knaw.nl",
@@ -142,7 +142,7 @@ project <- list(title = "SPI-Birds Network and Database",
                                                             surName = "Culina"),
                                       role = "principalInvestigator",
                                       userId = "0000-0003-2910-8085"),
-                                 list(individualName = list(givenName = "Marcel E.",
+                                 list(individualName = list(givenName = "Marcel E",
                                                             surName = "Visser"),
                                       role = "principalInvestigator",
                                       userId = "0000-0002-1456-1939")))
