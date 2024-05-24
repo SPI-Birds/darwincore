@@ -62,7 +62,6 @@ map_to_DwCA <- function(countryCode,
                        dplyr::select("PopID", "PopName"), 
                      by = "PopID") %>% 
     dplyr::mutate(verbatimLocality = dplyr::case_when(PopID == "LIC" ~ "Lichtenbeek", 
-                                                      PopID == "LIE" ~ "Liesbos", 
                                                       TRUE ~ PopName)) %>% 
     dplyr::left_join(pop_locations %>% 
                        dplyr::select("site_name", "country", "latitude", "longitude") %>% 
@@ -86,9 +85,6 @@ map_to_DwCA <- function(countryCode,
     dplyr::mutate(eventDate = dplyr::if_else(!is.na(minLD), paste(minLD, substring(maxLD, first = 6, last = 10), sep = "/"), 
                                              as.character(BreedingSeason))) %>% 
     dplyr::ungroup() %>% 
-    dplyr::left_join(location %>% 
-                       dplyr::distinct(., PopID, HabitatType, .keep_all = FALSE),
-                     by = "PopID") %>% 
     # add metadata fields of event class
     dplyr::mutate(language = "en",
                   institutionID = institutionID,
