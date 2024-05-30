@@ -1,8 +1,8 @@
 # Function to map SPI Birds derived abundance data on breeding pairs to Darwin Core Archive with occurrence core ####
 
-# Author: Cherine Jantzen
+# Authors: Cherine Jantzen, Stefan Vriend
 # Created: 2024-05-15
-# Last updated: 2024-05-22
+# Last updated: 2024-05-30
 
 
 # I. Preparation ----------------------------------------------------------
@@ -34,7 +34,6 @@ map_to_DwCA <- function(countryCode,
   # get supportive information to translate species and location codes from SPI Birds & get coordinates of study sites
   species_codes <- read.csv("https://raw.githubusercontent.com/SPI-Birds/pipelines/master/inst/extdata/species_codes.csv")
   pop_codes <- read.csv("https://raw.githubusercontent.com/SPI-Birds/pipelines/master/inst/extdata/pop_codes.csv")
-  pop_locations <- read.csv("https://raw.githubusercontent.com/SPI-Birds/pipelines/master/inst/extdata/pop_locations.csv")
   
   # A. Taxonomic information ----
   
@@ -57,21 +56,15 @@ map_to_DwCA <- function(countryCode,
   
   ## translate population ID into verbatim names and get coordinates per area
   locationInformation <- brood %>% 
-    dplyr::distinct(., PopID, .keep_all = FALSE) %>% 
+    dplyr::distinct(PopID, .keep_all = FALSE) %>% 
     dplyr::left_join(pop_codes %>% 
-                       dplyr::select("PopID", "PopName"), 
+                       dplyr::select("PopID", "PopName", "Country", "CountryCode", "Latitude", "Longitude"), 
                      by = "PopID") %>% 
-    dplyr::mutate(verbatimLocality = dplyr::case_when(PopID == "LIC" ~ "Lichtenbeek", 
-                                                      TRUE ~ PopName)) %>% 
-    dplyr::left_join(pop_locations %>% 
-                       dplyr::select("site_name", "country", "latitude", "longitude") %>% 
-                       dplyr::mutate(site_name = dplyr::case_when(stringr::str_detect(string = site_name, pattern = "Westerheide") ~ "Westerheide",
-                                                                  stringr::str_detect(string = site_name, pattern = "Liesbos") ~ "Liesbos",
-                                                                  TRUE ~ site_name),
-                                     countryCode = countryCode),
-                     by = c("verbatimLocality" = "site_name")) %>% 
-    dplyr::rename(decimalLatitude = latitude,
-                  decimalLongitude = longitude) %>% 
+    dplyr::rename(country = Country,
+                  countryCode = CountryCode,
+                  verbatimLocality = PopName,
+                  decimalLatitude = Latitude,
+                  decimalLongitude = Longitude,) %>% 
     dplyr::mutate(geodeticDatum = "EPSG:4326")
   
   # C. Get Event information ----
@@ -93,13 +86,12 @@ map_to_DwCA <- function(countryCode,
   # D. Combine information into occurrence core file ----
   occurrence <- breedingPairs %>% 
     # add taxonomic information
-    dplyr::left_join(taxonInformation %>% 
-                       dplyr::select("SpeciesID", "kingdom", "phylum", "class", "order", "family", "genus", 
+    dplyr::left_join(taxonInformation %>%
+                       dplyr::select("SpeciesID", "kingdom", "phylum", "class", "order", "family", "genus",
                                      "specificEpithet", "scientificName" = "scientificname", "taxonRank", "vernacularName"),
-                     by = c("Species" = "SpeciesID")) %>% 
+                     by = c("Species" = "SpeciesID")) %>%
     # add location information
-    dplyr::left_join(locationInformation %>% 
-                       dplyr::select(!"PopName"), 
+    dplyr::left_join(locationInformation, 
                      by = "PopID") %>% 
     # add event information
     dplyr::left_join(eventInformation %>% 
