@@ -17,15 +17,13 @@ library(tidyr)
 
 # Arguments
 
-## countryCode: character, two letter ISO country code specifying the country in which the data was collected
 ## institution: character, specifying the name of the institution that owns the data
 ## institutionID: character, specifying the institional ID as required for DwC-term "institutionID". Should ideally be Research Organization Registry (ROR) identifier (e.g., "https://ror.org/01g25jp36")
 ## quantityType: character, specifying the system or unit in which the organism Quantities are given (i.e. DwC-term "organismQuantityType"). Default is set to "breeding pairs" as the function is tailored to breeding pair count data
 ## data_directory: character, specifying the name of the folder or directory the output files should be stored in
 ## output_prefix: character, specifying the prefix of the filename for the output csv file
 
-map_to_DwCA <- function(countryCode,
-                        institution,
+map_to_DwCA <- function(institution,
                         institutionID,
                         quantityType = "breeding pairs",
                         data_directory,
@@ -49,12 +47,14 @@ map_to_DwCA <- function(countryCode,
     dplyr::filter(status == "ACCEPTED", matchtype == "EXACT") %>% 
     dplyr::left_join(taxa, by = c("canonicalname" = "BinomialName")) %>% 
     tidyr::separate(canonicalname, c("Genus", "specificEpithet"), remove = FALSE) %>% 
-    dplyr::mutate(taxonRank = "species") %>% 
+    dplyr::mutate(taxonRank = "species",
+                  taxonomicStatus = tolower(status),
+                  genericName = genus) %>% 
     dplyr::rename("vernacularName" = "CommonName")
   
   # B. Location information ----
   
-  ## translate population ID into verbatim names and get coordinates per area
+  ## get location information from SPI-Birds file `pop_codes`
   locationInformation <- brood %>% 
     dplyr::distinct(PopID, .keep_all = FALSE) %>% 
     dplyr::left_join(pop_codes %>% 
@@ -62,10 +62,11 @@ map_to_DwCA <- function(countryCode,
                      by = "PopID") %>% 
     dplyr::rename(country = Country,
                   countryCode = CountryCode,
-                  verbatimLocality = PopName,
-                  decimalLatitude = Latitude,
-                  decimalLongitude = Longitude,) %>% 
-    dplyr::mutate(geodeticDatum = "EPSG:4326")
+                  verbatimLocality = PopName) %>% 
+    dplyr::mutate(geodeticDatum = "EPSG:4326",
+                  continent = "Europe",
+                  decimalLatitude = round(Latitude, digits = 5),
+                  decimalLongitude = round(Longitude, digits = 5))
   
   # C. Get Event information ----
   
@@ -75,8 +76,9 @@ map_to_DwCA <- function(countryCode,
     dplyr::group_by(PopID, Species, BreedingSeason) %>% 
     dplyr::summarise(minLD = min(c(LayDate_min, LayDate_observed), na.rm = TRUE),
                      maxLD = max(c(LayDate_max, LayDate_observed), na.rm = TRUE)) %>% 
-    dplyr::mutate(eventDate = dplyr::if_else(!is.na(minLD), paste(minLD, substring(maxLD, first = 6, last = 10), sep = "/"), 
-                                             as.character(BreedingSeason))) %>% 
+    dplyr::mutate(eventDate = paste(minLD, maxLD, sep = "/"),
+                  startDayOfYear = lubridate::yday(substring(eventDate, first = 1, last = 10)),
+                  endDayOfYear = lubridate::yday(substring(eventDate, first = 12, last = 21))) %>% 
     dplyr::ungroup() %>% 
     # add metadata fields of event class
     dplyr::mutate(language = "en",
@@ -88,7 +90,7 @@ map_to_DwCA <- function(countryCode,
     # add taxonomic information
     dplyr::left_join(taxonInformation %>%
                        dplyr::select("SpeciesID", "kingdom", "phylum", "class", "order", "family", "genus",
-                                     "specificEpithet", "scientificName" = "scientificname", "taxonRank", "vernacularName"),
+                                     "specificEpithet", "scientificName" = "scientificname", "taxonRank", "vernacularName", "genericName", "taxonomicStatus"),
                      by = c("Species" = "SpeciesID")) %>%
     # add location information
     dplyr::left_join(locationInformation, 
@@ -105,18 +107,18 @@ map_to_DwCA <- function(countryCode,
                   occurrenceStatus = "present",
                   occurrenceID = paste(PopID, year, Species, sep = "-")) %>% 
       # reorder columns for the final output file
-    dplyr::select("occurrenceID", "year", "eventDate", "organismQuantity", "organismQuantityType", "occurrenceStatus", "basisOfRecord",
+    dplyr::select("occurrenceID", "year", "eventDate", "startDayOfYear", "endDayOfYear", "organismQuantity", "organismQuantityType", "occurrenceStatus", "basisOfRecord", "continent",
                   "country", "countryCode", "verbatimLocality", "decimalLatitude", "decimalLongitude", "geodeticDatum", "language", 
                   "institutionID", "institutionCode", "scientificName", "kingdom", "phylum", "class", "order", "family", "genus", 
-                  "specificEpithet", "taxonRank", "vernacularName")
+                  "genericName", "specificEpithet", "taxonRank", "vernacularName", "taxonomicStatus")
   
   # save additional information to be used in EML file
   save(taxonInformation, file = paste(data_directory, "taxonInformation.rda", sep = "/"))
   save(locationInformation, file = paste(data_directory, "locationInformation.rda", sep = "/"))
-  
+
   # save occurrence output file
   # write occurrence file
-  write.csv(occurrence, file = paste(data_directory, paste(output_prefix, "occurrence.csv", sep = "_"), sep = "/"), 
+  write.csv(occurrence, file = paste(data_directory, paste(output_prefix, "occurrence.csv", sep = "_"), sep = "/"),
             row.names = FALSE)
   
   return(occurrence)

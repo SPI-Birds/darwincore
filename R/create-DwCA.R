@@ -30,8 +30,7 @@ breedingPairs <- brood %>%
 
 # III. Map to Darwin Core -------------------------------------------------
 
-occurrence <- map_to_DwCA(countryCode = "NL",
-                          institution = "NIOO-KNAW",
+occurrence <- map_to_DwCA(institution = "NIOO-KNAW",
                           institutionID = "https://ror.org/01g25jp36",
                           data_directory = "data",
                           output_prefix = "SPIBirds")
