@@ -59,6 +59,7 @@ map_to_DwCA <- function(protocol,
     dplyr::rename("vernacularName" = "CommonName")
   
   # B. Location information ----
+  ## calculate coordinate uncertainty
   coordinateUncertainty <- calculate_spatial_extent(brood, location)
   
   ## get location information from SPI-Birds file `pop_codes`

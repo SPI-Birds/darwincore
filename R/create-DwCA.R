@@ -1,8 +1,8 @@
 # NIOO SPI Birds data to Darwin Core Archive ####
 
-# Author: Cherine Jantzen
+# Author: Cherine Jantzen, Stefan Vriend
 # Created: 2024-05-13
-# Last updated: 2024-05-17
+# Last updated: 2024-06-12
 
 
 # I. Preparation ----------------------------------------------------------
@@ -40,13 +40,13 @@ map_to_DwCA(protocol = "Visser, M. E., Lindner, M., Gienapp, P., Long, M. C., & 
             institutionID = "https://ror.org/01g25jp36",
             data_directory = "data",
             output_prefix = "SPIBirds") %>% 
-  purrr::map2(.x = c("event", "occurrence"),
-              .y = .,
-              .f = ~ {
-                
-                assign(.x, .y, envir = .GlobalEnv)
-                
-              })
+  purrr::walk2(.x = c("event", "occurrence"),
+               .y = .,
+               .f = ~ {
+                 
+                 assign(.x, .y, envir = .GlobalEnv)
+                 
+               })
   
 
 # IV. Meta-xml file -------------------------------------------------------
