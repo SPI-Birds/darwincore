@@ -1,8 +1,8 @@
-# Function to calculate the spatial extent of a study location ####
+# Functions to calculate the spatial extent (in meters) of a study location and map locations on an interactive Leaflet map ####
 
 # Authors: Stefan Vriend
 # Created: 2024-06-04
-# Last updated: 2024-06-04
+# Last updated: 2024-06-12
 
 
 # Load packages -----------------------------------------------------------
@@ -30,7 +30,21 @@ calculate_spatial_extent <- function(brood,
                      maxLat = max(Latitude, na.rm = TRUE),
                      minLon = min(Longitude, na.rm = TRUE),
                      maxLon = max(Longitude, na.rm = TRUE),
-                     .by = "PopID")
+                     .by = "PopID") |> 
+    # Temporary fix: add bounding box for Liesbos and Warnsborn manually
+    # until they are corrected in SPI-Birds
+    dplyr::mutate(minLat = dplyr::case_when(PopID == "LIE" ~ 51.58148,
+                                            PopID == "WAR" ~ 52.00952,
+                                            TRUE ~ minLat),
+                  maxLat = dplyr::case_when(PopID == "LIE" ~ 51.58474,
+                                            PopID == "WAR" ~ 52.01781,
+                                            TRUE ~ maxLat),
+                  minLon = dplyr::case_when(PopID == "LIE" ~ 4.68757,
+                                            PopID == "WAR" ~ 5.85353,
+                                            TRUE ~ minLon),
+                  maxLon = dplyr::case_when(PopID == "LIE" ~ 4.69770,
+                                            PopID == "WAR" ~ 5.87227,
+                                            TRUE ~ maxLon))
   
   # Extract centre points from pop_codes (a SPI-Birds internal table)
   centroids <- pop_codes |> 
@@ -49,8 +63,9 @@ calculate_spatial_extent <- function(brood,
                   north = geosphere::distHaversine(p1 = c(Longitude, maxLat),
                                                    p2 = c(Longitude, Latitude)),
                   south = geosphere::distHaversine(p1 = c(Longitude, minLat),
-                                                   p2 = c(Longitude, Latitude))) |> 
-    dplyr::mutate(uncertainty = round(max(c(west, east, north, south))),
+                                                   p2 = c(Longitude, Latitude))) |>
+    # Round the uncertainty to the nearest 100 meter
+    dplyr::mutate(uncertainty = round(max(c(west, east, north, south)) / 100) * 100,
                   uncertainty = dplyr::if_else(uncertainty == 0, NA_real_, uncertainty)) |> 
     dplyr::select("PopID", 
                   "coordinateUncertaintyInMeters" = "uncertainty")
@@ -68,9 +83,9 @@ calculate_spatial_extent <- function(brood,
 # - brood: R data object containing SPI-Birds formatted brood data
 # - location: R data object containing SPI-Birds formatted location data
 
-leaflet_map <- function(PopID,
-                        brood,
-                        location) {
+map_locations <- function(PopID,
+                          brood,
+                          location) {
   
   # Keep location records that are associated with broods
   location <- location |> 
@@ -90,4 +105,4 @@ leaflet_map <- function(PopID,
 }
 
 # Example
-# leaflet_map("HOG", brood, location)
+# map_locations("HOG", brood, location)
