@@ -1,4 +1,4 @@
-# Function to map SPI Birds derived abundance data on breeding pairs to Darwin Core Archive with occurrence core ####
+# Function to map SPI Birds derived abundance data on breeding pairs to Darwin Core Archive with event core and occurrence extension ####
 
 # Authors: Cherine Jantzen, Stefan Vriend
 # Created: 2024-05-15
