@@ -65,7 +65,7 @@ calculate_spatial_extent <- function(brood,
                   south = geosphere::distHaversine(p1 = c(Longitude, minLat),
                                                    p2 = c(Longitude, Latitude))) |>
     # Round the uncertainty to the nearest 100 meter
-    dplyr::mutate(uncertainty = round(max(c(west, east, north, south)) / 100) * 100,
+    dplyr::mutate(uncertainty = ceiling(max(c(west, east, north, south)) / 100) * 100,
                   uncertainty = dplyr::if_else(uncertainty == 0, NA_real_, uncertainty)) |> 
     dplyr::select("PopID", 
                   "coordinateUncertaintyInMeters" = "uncertainty")
