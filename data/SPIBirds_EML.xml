@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="d8370484-e2bd-483d-a1c5-9a87fc625793" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
-    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database</title>
+    <title xml:lang="en">Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW)</title>
     <creator>
       <individualName>
         <givenName>Marcel E</givenName>
@@ -74,7 +74,7 @@
     </metadataProvider>
     <language>en</language>
     <abstract>
-      <para>This dataset contains the annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands. Data were collected by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.</para>
+      <para>This dataset contains the annual number of breeding pairs of eight hole-nesting bird species across seven long-term study sites in the Netherlands. Data were collected by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.</para>
     </abstract>
     <keywordSet>
       <keyword>breeding birds</keyword>
@@ -95,7 +95,7 @@
     </licensed>
     <coverage>
       <geographicCoverage>
-        <geographicDescription>Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.</geographicDescription>
+        <geographicDescription>Seven study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Oosterhout and Warnsborn.</geographicDescription>
         <boundingCoordinates>
           <westBoundingCoordinate>4.70028</westBoundingCoordinate>
           <eastBoundingCoordinate>5.86816</eastBoundingCoordinate>

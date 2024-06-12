@@ -33,9 +33,7 @@ breedingPairs <- brood %>%
 
 # III. Map to Darwin Core -------------------------------------------------
 
-map_to_DwCA(protocol = "Visser, M. E., Lindner, M., Gienapp, P., Long, M. C., & Jenouvrier, S. (2021). 
-            Recent natural variability in global warming weakened phenological mismatch and selection on seasonal timing in great tits (Parus major). 
-            Proceedings of the Royal Society B, 288(1963), 20211337. https://doi.org/10.1098/rspb.2021.1337", 
+map_to_DwCA(protocol = "Visser, M. E., Lindner, M., Gienapp, P., Long, M. C., & Jenouvrier, S. (2021). Recent natural variability in global warming weakened phenological mismatch and selection on seasonal timing in great tits (Parus major). Proceedings of the Royal Society B, 288(1963), 20211337. https://doi.org/10.1098/rspb.2021.1337", 
             institution = "NIOO-KNAW",
             institutionID = "https://ror.org/01g25jp36",
             data_directory = "data",
