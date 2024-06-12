@@ -1,8 +1,8 @@
 # Pipeline for creation of EML metadata file of the DwC-A of the SPI Birds NIOO data ####
 
-# Authors: Cherine Jantzen
+# Authors: Cherine Jantzen, Stefan Vriend
 # Created: 2024-05-14
-# Last updated: 2024-05-22
+# Last updated: 2024-06-12
 
 
 # Load packages
@@ -19,7 +19,7 @@ load(here::here("data", "locationInformation.rda"))
 # I. Fill in metadata ----------------------------------------------------
 
 # Title of the data set
-title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW) as hosted at SPI-Birds Network and Database"
+title <- "Breeding pair abundances derived from nestbox studies of the Netherlands Institute of Ecology (NIOO-KNAW)"
 
 # Information on the creator of the data set
 creator <- list(list(individualName = list(givenName = "Marcel E",
@@ -79,7 +79,7 @@ contactPerson <- list(individualName = list(givenName = "Stefan J G",
 language <- "en"
 
 # Abstract describing the data set
-abstract <- list(para = "This dataset contains the annual number of breeding pairs of eight hole-nesting bird species across eight long-term study sites in the Netherlands. Data were collected by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.")
+abstract <- list(para = "This dataset contains the annual number of breeding pairs of eight hole-nesting bird species across seven long-term study sites in the Netherlands. Data were collected by the Netherlands Institute of Ecology (NIOO-KNAW) and hosted at SPI-Birds Network and Database, an intiative that connects researchers working on populations of individually-marked breeding birds, harmonises their data, and facilitates collaboration, synthesis, and data reuse.")
 
                    
 # List of keywords and the thesaurus they are listed in
@@ -94,7 +94,7 @@ licensed <- list(licenseName = "Creative Commons Attribution 4.0 International",
                  identifier = "CC-BY-4.0")
 
 # geographic coverage
-geographic_coverage <- list(geographicDescription = "Eight study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Lichtenbeek, Oosterhout and Warnsborn.",
+geographic_coverage <- list(geographicDescription = "Seven study sites across the Netherlands, namely Hoge Veluwe, Vlieland, Liesbos, Westerheide, Buunderkamp, Oosterhout and Warnsborn.",
                             boundingCoordinates = list(westBoundingCoordinate = as.character(min(locationInformation$decimalLongitude)),
                                                        eastBoundingCoordinate = as.character(max(locationInformation$decimalLongitude)),
                                                        northBoundingCoordinate = as.character(max(locationInformation$decimalLatitude)),
